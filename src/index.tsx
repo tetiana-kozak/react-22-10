@@ -1,25 +1,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-// without jsx
-// const title = React.createElement('h1', {id: 'title'}, "hello react js")
-// console.log(title);
+function Title() {
+    return <h1>Hello TS</h1>
+}
 
-// jsx => js extended
-const title = <h1 id="title">Hello js</h1>
-console.log(title)
+function List() {
+    return (
+        <React.Fragment>
 
-const content = (
-    <div>
-        {title}
-        {10 + 10}
-        <ul className="list">
-            <li>List item 1</li>
-            <li>List item 2</li>
-            <li>List item 3</li>
-        </ul>
-    </div>
-)
+            <ul>
+                <li>List item 1</li>
+                <li>List item 2</li>
+                <li>List item 3</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti labore tenetur nemo perferendis, ut atque incidunt! Neque officia maxime, sed aperiam quod ratione similique veritatis nemo dolor exercitationem voluptas odit.</p>
+        </React.Fragment>
+    )
+}
+
+const App = () => {
+    return (
+        <div className='app'>
+            <Title />
+            <List />
+        </div>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-root.render(<React.StrictMode>{content}</React.StrictMode>)
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+)
