@@ -7,7 +7,7 @@ function Title() {
 
 function List() {
     return (
-        <React.Fragment>
+        <>
 
             <ul>
                 <li>List item 1</li>
@@ -15,7 +15,7 @@ function List() {
                 <li>List item 3</li>
             </ul>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti labore tenetur nemo perferendis, ut atque incidunt! Neque officia maxime, sed aperiam quod ratione similique veritatis nemo dolor exercitationem voluptas odit.</p>
-        </React.Fragment>
+        </>
     )
 }
 
