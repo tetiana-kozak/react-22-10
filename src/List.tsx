@@ -4,6 +4,7 @@ import './List.css'
 
 type Props = {}
 export const List = (props: Props) => {
+    let data = false
     return (
         <>
             <ul>
@@ -11,7 +12,7 @@ export const List = (props: Props) => {
                 <li>List item 20</li>
                 <li>List item 30</li>
             </ul>
-            <p className="content">
+            <p className={`article-desc ${data ? 'content' : 'test'}`}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Corrupti labore tenetur nemo perferendis, ut atque incidunt!
                 Neque officia maxime, sed aperiam quod ratione similique

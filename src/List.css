@@ -1,4 +1,11 @@
 .content {
-  color: white;
-  background-color: blue;
+    background-color: blue;
+}
+.test {
+    background-color: peru;
+}
+
+.article-desc {
+    color: white;
+    padding: 10px;
 }
