@@ -1,6 +1,6 @@
 // tsrafce
 
-import classes from './List.module.css'
+import './List.scss'
 
 type Props = {}
 export const List = (props: Props) => {
@@ -12,11 +12,7 @@ export const List = (props: Props) => {
                 <li>List item 20</li>
                 <li>List item 30</li>
             </ul>
-            <p
-                className={`${classes['article-desc']} ${
-                    data ? classes.content : classes.test
-                }`}
-            >
+            <p className={`'article-desc' ${data ? 'content' : 'test'}`}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Corrupti labore tenetur nemo perferendis, ut atque incidunt!
                 Neque officia maxime, sed aperiam quod ratione similique
