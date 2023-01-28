@@ -18,7 +18,7 @@ export const List = (props: Props) => {
                 Neque officia maxime, sed aperiam quod ratione similique
                 veritatis nemo dolor exercitationem voluptas odit.
             </p>
-            <p>
+            <p className={'article-desc content'}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
                 accusantium sed quod a animi tempora magni dolore mollitia iusto
                 consequatur ipsum voluptate, atque suscipit, inventore facere,
