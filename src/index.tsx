@@ -10,12 +10,12 @@ import {List} from './List'
 // }
 
 type TitleProps = {
-    name: string
+    name?: string
     text: string
     year?: number
 }
 
-const Title = ({name,text, year}: TitleProps) => {
+const Title = ({name = "Jack",text, year}: TitleProps) => {
     // console.log(props);
     return (
         <>
@@ -29,7 +29,7 @@ const Title = ({name,text, year}: TitleProps) => {
 const App = () => {
     return (
         <div className="app">
-            <Title name="App" text="text1" year={11} />
+            <Title text="text1" year={11} />
             <Title name="React" text="text2" />
             <Title name="TS" text="text3" year={13} />
             <List />
