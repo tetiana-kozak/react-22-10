@@ -3,14 +3,6 @@ import ProductsListItem from './ProductsListItem'
 import productsArray from 'utils/productsArray'
 
 type Props = {}
-type Product = {
-    title: string
-    description: string
-    type: string
-    capacity: string
-    price: number
-    id: number
-}
 
 const ProductsList = (props: Props) => {
     return (
@@ -34,9 +26,11 @@ const ProductsList = (props: Props) => {
                         capacity,
                         price,
                         id,
-                    }: Product) => (
+                        image,
+                    }) => (
                         <Grid item xs={12} sm={6} md={4} key={id}>
                             <ProductsListItem
+                                image={image}
                                 title={title}
                                 description={description}
                                 type={type}
