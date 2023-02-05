@@ -18,17 +18,25 @@ const ProductsList = (props: Props) => {
                 List of products
             </Typography>
             <Grid container spacing={4}>
-                {productsArray.map((product: Product) => (
-                    <Grid item xs={12} sm={6} md={4}>
-                        <ProductsListItem
-                            title={product.title}
-                            description={product.description}
-                            type={product.type}
-                            capacity={product.capacity}
-                            price={product.price}
-                        />
-                    </Grid>
-                ))}
+                {productsArray.map(
+                    ({
+                        title,
+                        description,
+                        type,
+                        capacity,
+                        price,
+                    }: Product) => (
+                        <Grid item xs={12} sm={6} md={4}>
+                            <ProductsListItem
+                                title={title}
+                                description={description}
+                                type={type}
+                                capacity={capacity}
+                                price={price}
+                            />
+                        </Grid>
+                    )
+                )}
             </Grid>
         </>
     )
