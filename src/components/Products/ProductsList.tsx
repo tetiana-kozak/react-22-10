@@ -9,6 +9,7 @@ type Product = {
     type: string
     capacity: string
     price: number
+    id: number
 }
 
 const ProductsList = (props: Props) => {
@@ -26,11 +27,15 @@ const ProductsList = (props: Props) => {
             </Typography>
             <Grid container spacing={4}>
                 {productsArray.map(
-                    (
-                        { title, description, type, capacity, price }: Product,
-                        i
-                    ) => (
-                        <Grid item xs={12} sm={6} md={4} key={i}>
+                    ({
+                        title,
+                        description,
+                        type,
+                        capacity,
+                        price,
+                        id,
+                    }: Product) => (
+                        <Grid item xs={12} sm={6} md={4} key={id}>
                             <ProductsListItem
                                 title={title}
                                 description={description}
