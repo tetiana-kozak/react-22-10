@@ -30,18 +30,18 @@ class ProductsListItem extends Component<Props, State> {
         show: false,
     }
 
-    onIncrementClick = (num: number) => {
+    onIncrementClick = () => {
         this.setState((prevState) => ({
-            count: prevState.count + num,
+            count: prevState.count + 1,
         }))
     }
 
-    onDecrementClick = (num: number) => {
-        if (this.state.count > 0) {
-            this.setState((prevState) => ({
-                count: prevState.count - num,
-            }))
-        }
+    onDecrementClick = () => {
+        // if (this.state.count > 0) {
+        this.setState((prevState) => ({
+            count: prevState.count - 1,
+        }))
+        // }
     }
 
     changeColor = () => {
@@ -110,15 +110,17 @@ class ProductsListItem extends Component<Props, State> {
                         <Button
                             variant="outlined"
                             onClick={() => {
-                                this.onDecrementClick(1)
+                                this.onDecrementClick()
                             }}
+                            disabled={this.state.count <= 1}
                         >
                             -
                         </Button>
                         <TextField size="small" value={this.state.count} />
                         <Button
                             variant="outlined"
-                            onClick={() => this.onIncrementClick(1)}
+                            onClick={() => this.onIncrementClick()}
+                            disabled={this.state.count >= 10}
                         >
                             +
                         </Button>
