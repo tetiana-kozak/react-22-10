@@ -84,7 +84,7 @@ class ProductsListItem extends Component<Props, State> {
                     </button>
                     <br />
 
-                    {this.state.show ? (
+                    {this.state.show && (
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Non sunt adipisci dolorum temporibus
@@ -95,7 +95,7 @@ class ProductsListItem extends Component<Props, State> {
                             error sed odit illum ea adipisci! Cumque aspernatur
                             sed vitae!
                         </p>
-                    ) : null}
+                    )}
 
                     <button
                         onClick={() => {
