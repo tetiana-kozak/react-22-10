@@ -19,11 +19,13 @@ type Props = {
 
 type State = {
     count: number
+    color: string
 }
 
 class ProductsListItem extends Component<Props, State> {
     state = {
-        count: 1,
+        count: 0,
+        color: 'red',
     }
 
     onIncrementClick = (num: number) => {
@@ -33,9 +35,25 @@ class ProductsListItem extends Component<Props, State> {
     }
 
     onDecrementClick = (num: number) => {
-        this.setState((prevState) => ({
-            count: prevState.count - num,
-        }))
+        if (this.state.count > 0) {
+            this.setState((prevState) => ({
+                count: prevState.count - num,
+            }))
+        }
+    }
+
+    changeColor = () => {
+        this.setState((prevState) => {
+            if (prevState.color === 'red') {
+                return {
+                    color: 'blue',
+                }
+            } else {
+                return {
+                    color: 'red',
+                }
+            }
+        })
     }
 
     render() {
@@ -54,18 +72,31 @@ class ProductsListItem extends Component<Props, State> {
                     <div className="product-features">
                         Capacity: {capacity} Gb
                     </div>
+
+                    <div>
+                        Color:{' '}
+                        <span className={this.state.color}>
+                            {this.state.color}
+                        </span>
+                    </div>
+                    <button onClick={() => this.changeColor()}>
+                        Change color
+                    </button>
+
                     <div className="product-price">{price}$</div>
                     <div className="product-quantity">
                         <Button
                             variant="outlined"
-                            onClick={() => this.onDecrementClick(2)}
+                            onClick={() => {
+                                this.onDecrementClick(1)
+                            }}
                         >
                             -
                         </Button>
                         <TextField size="small" value={this.state.count} />
                         <Button
                             variant="outlined"
-                            onClick={() => this.onIncrementClick(2)}
+                            onClick={() => this.onIncrementClick(1)}
                         >
                             +
                         </Button>
