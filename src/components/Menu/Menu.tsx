@@ -8,9 +8,15 @@ const Menu = (props: Props) => {
             <Button color="inherit">
                 <NavLink to="/">Home</NavLink>
             </Button>
-            <Button color="inherit">About</Button>
-            <Button color="inherit">Shipping</Button>
-            <Button color="inherit">Payment</Button>
+            <Button color="inherit">
+                <NavLink to="/about">About</NavLink>
+            </Button>
+            <Button color="inherit">
+                <NavLink to="/shipping">Shipping</NavLink>
+            </Button>
+            <Button color="inherit">
+                <NavLink to="/payment">Payment</NavLink>
+            </Button>
             <Button color="inherit">
                 <NavLink to="/cart">Cart</NavLink>
             </Button>
