@@ -30,7 +30,6 @@ const App = (props: Props) => {
             <Header productsInCart={productsInCart} />
             {/* <button onClick={() => addProductToCart(2, 5)}>Add to cart</button> */}
             <Main addProductToCart={addProductToCart} />
-            {/* <Main addProductToCart={addProductToCart} /> */}
             <Footer />
         </StyledEngineProvider>
     )
