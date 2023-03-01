@@ -14,13 +14,21 @@ type productsInCartType = {
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<productsInCartType>({
         1: 5,
+        2: 6,
     })
 
     const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({
-            [id]: prevState[id] + count,
-        }))
+        setProductsInCart((prevState) =>
+            Object.assign({}, prevState, {
+                [id]: prevState[id] + count,
+            })
+        )
     }
+    // const addProductToCart = (id: number, count: number) => {
+    //     setProductsInCart((prevState) => ({
+    //         [id]: prevState[id] + count,
+    //     }))
+    // }
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
