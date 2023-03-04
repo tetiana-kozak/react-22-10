@@ -9,9 +9,6 @@ type Props = {
     productsInCart: {
         [id: number]: number
     }
-    productsObject?: {
-        [id: number]: Product
-    }
     removeProductFromCart: (id: number) => void
 }
 
