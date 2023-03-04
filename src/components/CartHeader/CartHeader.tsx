@@ -1,5 +1,6 @@
-import productsArray, { getProductsObject, Product } from 'utils/productsArray'
-import './CartHeader.scss'
+import { Product } from 'utils/productsArray'
+import CartTotal from 'components/CartTotal/CartTotal'
+import CartProductList from 'components/CartProductList/CartProductList'
 
 type Props = {
     productsInCart: {
@@ -9,19 +10,11 @@ type Props = {
         [id: number]: Product
     }
 }
-const CartHeader = ({
-    productsInCart,
-    productsObject = getProductsObject(productsArray),
-}: Props) => {
+const CartHeader = ({ productsInCart }: Props) => {
     return (
         <div>
-            <div className="header-total-count">
-                {Object.keys(productsInCart).reduce(
-                    (total, productId) =>
-                        total + productsInCart[parseInt(productId)],
-                    0
-                )}
-            </div>
+            <CartProductList productsInCart={productsInCart} />
+            <CartTotal productsInCart={productsInCart} />
         </div>
     )
 }

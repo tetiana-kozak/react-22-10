@@ -1,6 +1,7 @@
-import productsArray, { getProductsObject, Product } from 'utils/productsArray'
+import { Product } from 'utils/productsArray'
 import { Typography } from '@mui/material'
-import './CartPage.scss'
+import CartTotal from 'components/CartTotal/CartTotal'
+import CartProductList from 'components/CartProductList/CartProductList'
 
 type Props = {
     productsInCart: {
@@ -11,10 +12,7 @@ type Props = {
     }
 }
 
-const CartPage = ({
-    productsInCart,
-    productsObject = getProductsObject(productsArray),
-}: Props) => {
+const CartPage = ({ productsInCart }: Props) => {
     return (
         <div>
             <Typography
@@ -28,46 +26,9 @@ const CartPage = ({
                 Cart
             </Typography>
             <div>
-                <div>
-                    {Object.keys(productsInCart).map((productId) => (
-                        <div key={productId} className="cart-card">
-                            <div>
-                                <div>
-                                    {productsObject[parseInt(productId)].title}{' '}
-                                    : {productsInCart[parseInt(productId)]}
-                                </div>
-                                <div className="price">
-                                    Price per product :{' '}
-                                    {productsObject[parseInt(productId)].price}{' '}
-                                    $
-                                </div>
-                            </div>
-                            <div>
-                                <div className="count">
-                                    count: {productsInCart[parseInt(productId)]}
-                                </div>
-                                <div className="sum">
-                                    {productsObject[parseInt(productId)].price *
-                                        productsInCart[
-                                            parseInt(productId)
-                                        ]}{' '}
-                                    $
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="cart-total">
-                    Total:{' '}
-                    {Object.keys(productsInCart).reduce(
-                        (total, productId) =>
-                            total +
-                            productsObject[parseInt(productId)].price *
-                                productsInCart[parseInt(productId)],
-                        0
-                    )}{' '}
-                    $
-                </div>
+                <CartProductList productsInCart={productsInCart} />
+
+                <CartTotal productsInCart={productsInCart} />
             </div>
         </div>
     )
