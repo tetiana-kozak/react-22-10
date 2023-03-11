@@ -11,7 +11,6 @@ import AboutPage from 'pages/AboutPage/AboutPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import { omit } from 'lodash'
-import { type } from 'os'
 
 type Props = {}
 
