@@ -11,6 +11,7 @@ import AboutPage from 'pages/AboutPage/AboutPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import { omit } from 'lodash'
+import { type } from 'os'
 
 type Props = {}
 
@@ -18,8 +19,17 @@ type productsInCartType = {
     [id: number]: number
 }
 
+type productsLikeType = {
+    [id: number]: boolean
+}
+
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<productsInCartType>({})
+
+    const [productsLike, setProductsLike] = useState<productsLikeType>({
+        1: true,
+        3: true,
+    })
 
     const addProductToCart = (id: number, count: number) => {
         setProductsInCart((prevState) => ({
@@ -39,6 +49,13 @@ const App = (props: Props) => {
         }))
     }
 
+    const togleLikeState = (id: number) => {
+        setProductsLike((prevState) => ({
+            ...prevState,
+            [id]: !prevState[id],
+        }))
+    }
+
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
@@ -47,7 +64,13 @@ const App = (props: Props) => {
                 <Routes>
                     <Route
                         path="/"
-                        element={<Home addProductToCart={addProductToCart} />}
+                        element={
+                            <Home
+                                addProductToCart={addProductToCart}
+                                productsLike={productsLike}
+                                togleLikeState={togleLikeState}
+                            />
+                        }
                     />
 
                     <Route path="/about" element={<AboutPage />} />
