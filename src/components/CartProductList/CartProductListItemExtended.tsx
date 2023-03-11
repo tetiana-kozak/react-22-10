@@ -8,14 +8,12 @@ import { MyContext } from 'container/App/App'
 type Props = {
     productCount: number
     product: Product
-    removeProductFromCart: (id: number) => void
     changeProductQuantity: (id: number, count: number) => void
 }
 
 const CartProductListItemExtended = ({
     product,
     productCount,
-    removeProductFromCart,
     changeProductQuantity,
 }: Props) => {
     const data = useContext(MyContext)
@@ -39,7 +37,7 @@ const CartProductListItemExtended = ({
                         }
                         onDecrement={() =>
                             productCount <= 1
-                                ? removeProductFromCart(product.id)
+                                ? data?.removeProductFromCart(product.id)
                                 : changeProductQuantity(
                                       product.id,
                                       productCount - 1
@@ -49,7 +47,7 @@ const CartProductListItemExtended = ({
                     <br />
                     <Button
                         variant="outlined"
-                        onClick={() => removeProductFromCart(product.id)}
+                        onClick={() => data?.removeProductFromCart(product.id)}
                     >
                         <DeleteIcon />
                     </Button>

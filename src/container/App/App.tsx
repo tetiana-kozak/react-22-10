@@ -11,7 +11,6 @@ import AboutPage from 'pages/AboutPage/AboutPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import { omit } from 'lodash'
-// import { createContext } from 'vm'
 
 type Props = {}
 
@@ -25,6 +24,7 @@ type productsLikeType = {
 
 type Context = {
     productsLike: productsLikeType
+    removeProductFromCart: (id: number) => void
 }
 
 export const MyContext = createContext<Context | null>(null)
@@ -65,7 +65,7 @@ const App = (props: Props) => {
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
-            <MyContext.Provider value={{ productsLike }}>
+            <MyContext.Provider value={{ productsLike, removeProductFromCart }}>
                 <Header productsInCart={productsInCart} />
                 <Container sx={{ padding: '60px 0' }}>
                     <Routes>
@@ -91,9 +91,6 @@ const App = (props: Props) => {
                             element={
                                 <CartPage
                                     productsInCart={productsInCart}
-                                    removeProductFromCart={
-                                        removeProductFromCart
-                                    }
                                     changeProductQuantity={
                                         changeProductQuantity
                                     }
