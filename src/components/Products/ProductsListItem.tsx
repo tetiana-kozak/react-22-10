@@ -2,6 +2,8 @@ import { Button, Card, CardActions, CardContent } from '@mui/material'
 import Quantity from 'components/Quantity/Quantity'
 import { useState } from 'react'
 import './ProductsListItem.scss'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 
 type Props = {
     title: string
@@ -32,9 +34,14 @@ const ProductsListItem = ({
         setCount((prevState) => prevState - 1)
     }
 
+    const isLiked = false
+
     return (
         <Card className="product" variant="outlined">
             <CardContent>
+                <Button variant="outlined">
+                    {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                </Button>
                 <div className="product-image">
                     <img src={image} alt="" />
                 </div>
