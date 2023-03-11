@@ -4,13 +4,14 @@ import { Container } from '@mui/material'
 import Home from 'pages/Home/Home'
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import CartPage from 'pages/CartPage/CartPage'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import { omit } from 'lodash'
+// import { createContext } from 'vm'
 
 type Props = {}
 
@@ -21,6 +22,12 @@ type productsInCartType = {
 type productsLikeType = {
     [id: number]: boolean
 }
+
+type Context = {
+    productsLike: productsLikeType
+}
+
+export const MyContext = createContext<Context | null>(null)
 
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<productsInCartType>({})
@@ -58,39 +65,45 @@ const App = (props: Props) => {
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
-            <Header productsInCart={productsInCart} />
-            <Container sx={{ padding: '60px 0' }}>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <Home
-                                addProductToCart={addProductToCart}
-                                productsLike={productsLike}
-                                togleLikeState={togleLikeState}
-                            />
-                        }
-                    />
+            <MyContext.Provider value={{ productsLike }}>
+                <Header productsInCart={productsInCart} />
+                <Container sx={{ padding: '60px 0' }}>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <Home
+                                    addProductToCart={addProductToCart}
+                                    productsLike={productsLike}
+                                    togleLikeState={togleLikeState}
+                                />
+                            }
+                        />
 
-                    <Route path="/about" element={<AboutPage />} />
+                        <Route path="/about" element={<AboutPage />} />
 
-                    <Route path="/shipping" element={<ShippingPage />} />
+                        <Route path="/shipping" element={<ShippingPage />} />
 
-                    <Route path="/payment" element={<PaymentPage />} />
+                        <Route path="/payment" element={<PaymentPage />} />
 
-                    <Route
-                        path="/cart"
-                        element={
-                            <CartPage
-                                productsInCart={productsInCart}
-                                removeProductFromCart={removeProductFromCart}
-                                changeProductQuantity={changeProductQuantity}
-                            />
-                        }
-                    />
-                </Routes>
-            </Container>
-            <Footer />
+                        <Route
+                            path="/cart"
+                            element={
+                                <CartPage
+                                    productsInCart={productsInCart}
+                                    removeProductFromCart={
+                                        removeProductFromCart
+                                    }
+                                    changeProductQuantity={
+                                        changeProductQuantity
+                                    }
+                                />
+                            }
+                        />
+                    </Routes>
+                </Container>
+                <Footer />
+            </MyContext.Provider>
         </StyledEngineProvider>
     )
 }

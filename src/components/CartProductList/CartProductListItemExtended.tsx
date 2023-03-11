@@ -2,6 +2,8 @@ import { Card, CardContent, Grid, Button } from '@mui/material'
 import { Product } from 'utils/productsArray'
 import DeleteIcon from '@mui/icons-material/Delete'
 import Quantity from 'components/Quantity/Quantity'
+import { useContext } from 'react'
+import { MyContext } from 'container/App/App'
 
 type Props = {
     productCount: number
@@ -16,6 +18,9 @@ const CartProductListItemExtended = ({
     removeProductFromCart,
     changeProductQuantity,
 }: Props) => {
+    const data = useContext(MyContext)
+    console.log(data?.productsLike[product.id])
+
     return (
         <Grid item xs={12} sm={4}>
             <Card variant="outlined">
