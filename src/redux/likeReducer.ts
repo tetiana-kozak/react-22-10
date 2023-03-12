@@ -9,25 +9,21 @@ export const initialState: ProductsLikeType = {
     2: true,
 }
 
-// export const likeSlice = createSlice({
-//     name: 'like',
-//     initialState,
-//     reducers: {},
-// })
+export const likeSlice = createSlice({
+    name: 'like',
+    initialState,
+    reducers: {
+        addLike: (state, action) => ({
+            ...state,
+            [action.payload]: true,
+        }),
+        removeLike: (state, action) => ({
+            ...state,
+            [action.payload]: false,
+        }),
+    },
+})
 
-// export default likeSlice.reducer
+export const { addLike, removeLike } = likeSlice.actions
 
-const likeReducer = (state = initialState, action: AnyAction) => {
-    switch (action.type) {
-        case 'TOGGLE_LIKE': {
-            return {
-                ...state,
-                [action.id]: !state[action.id],
-            }
-        }
-        default:
-            return state
-    }
-}
-
-export default likeReducer
+export default likeSlice.reducer

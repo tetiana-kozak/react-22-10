@@ -5,6 +5,7 @@ import './ProductsListItem.scss'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { addLike, removeLike } from 'redux/likeReducer'
 
 type Props = {
     title: string
@@ -44,10 +45,9 @@ const ProductsListItem = ({
                 <Button
                     variant="outlined"
                     onClick={() =>
-                        dispatch({
-                            type: 'TOGGLE_LIKE',
-                            id,
-                        })
+                        isLiked
+                            ? dispatch(removeLike(id))
+                            : dispatch(addLike(id))
                     }
                 >
                     {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
