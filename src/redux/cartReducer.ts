@@ -10,7 +10,16 @@ export const initialState: State = {
 }
 
 const cartReducer = (state = initialState, action: AnyAction) => {
-    return state
+    switch (action.type) {
+        case 'ADD_PRODUCT_TO_CART': {
+            return {
+                ...state,
+                [action.id]: (state[action.id] || 0) + action.count,
+            }
+        }
+        default:
+            return state
+    }
 }
 
 export default cartReducer

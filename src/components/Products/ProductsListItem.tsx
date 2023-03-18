@@ -67,7 +67,13 @@ const ProductsListItem = ({
             <CardActions className="btns-wrap">
                 <Button
                     variant="outlined"
-                    onClick={() => addProductToCart(id, count)}
+                    onClick={() =>
+                        dispatch({
+                            type: 'ADD_PRODUCT_TO_CART',
+                            count,
+                            id,
+                        })
+                    }
                 >
                     Add to cart
                 </Button>
