@@ -10,45 +10,17 @@ import CartPage from 'pages/CartPage/CartPage'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
-import { omit } from 'lodash'
 
 type Props = {}
 
-type productsInCartType = {
-    [id: number]: number
-}
-
 const App = (props: Props) => {
-    const [productsInCart, setProductsInCart] = useState<productsInCartType>({})
-
-    const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({
-            ...prevState,
-            [id]: (prevState[id] || 0) + count,
-        }))
-    }
-
-    const removeProductFromCart = (id: number) => {
-        setProductsInCart((prevState) => omit(prevState, id))
-    }
-
-    const changeProductQuantity = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({
-            ...prevState,
-            [id]: count,
-        }))
-    }
-
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
-            <Header productsInCart={productsInCart} />
+            <Header />
             <Container sx={{ padding: '60px 0' }}>
                 <Routes>
-                    <Route
-                        path="/"
-                        element={<Home addProductToCart={addProductToCart} />}
-                    />
+                    <Route path="/" element={<Home />} />
 
                     <Route path="/about" element={<AboutPage />} />
 
@@ -56,16 +28,7 @@ const App = (props: Props) => {
 
                     <Route path="/payment" element={<PaymentPage />} />
 
-                    <Route
-                        path="/cart"
-                        element={
-                            <CartPage
-                                productsInCart={productsInCart}
-                                removeProductFromCart={removeProductFromCart}
-                                changeProductQuantity={changeProductQuantity}
-                            />
-                        }
-                    />
+                    <Route path="/cart" element={<CartPage />} />
                 </Routes>
             </Container>
             <Footer />

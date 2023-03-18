@@ -10,16 +10,9 @@ import { toggleLike } from 'redux/likeReducer'
 type Props = {
     productCount: number
     product: Product
-    removeProductFromCart: (id: number) => void
-    changeProductQuantity: (id: number, count: number) => void
 }
 
-const CartProductListItemExtended = ({
-    product,
-    productCount,
-    removeProductFromCart,
-    changeProductQuantity,
-}: Props) => {
+const CartProductListItemExtended = ({ product, productCount }: Props) => {
     const isLiked = useAppSelector((state) => state.productsLike[product.id])
     const dispatch = useAppDispatch()
 
