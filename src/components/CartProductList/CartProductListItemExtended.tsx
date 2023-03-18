@@ -43,7 +43,11 @@ const CartProductListItemExtended = ({
                         count={productCount}
                         minCount={0}
                         onIncrement={() =>
-                            changeProductQuantity(product.id, productCount + 1)
+                            dispatch({
+                                type: 'CHANGE_PRODUCT_QUANTITY',
+                                id: product.id,
+                                count: productCount + 1,
+                            })
                         }
                         onDecrement={() =>
                             productCount <= 1
@@ -51,10 +55,11 @@ const CartProductListItemExtended = ({
                                       type: 'REMOVE_PRODUCT_FROM_CART',
                                       id: product.id,
                                   })
-                                : changeProductQuantity(
-                                      product.id,
-                                      productCount - 1
-                                  )
+                                : dispatch({
+                                      type: 'CHANGE_PRODUCT_QUANTITY',
+                                      id: product.id,
+                                      count: productCount - 1,
+                                  })
                         }
                     />
                     <br />
