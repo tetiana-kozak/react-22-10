@@ -12,6 +12,13 @@
 .product-title {
     font-size: 22px;
     margin-bottom: 15px;
+    a {
+        color: black;
+        text-decoration: none;
+        &:hover {
+            color: grey;
+        }
+    }
 }
 .product-description {
     font-size: 18px;
