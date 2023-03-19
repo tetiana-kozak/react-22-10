@@ -7,6 +7,8 @@ import {
     Typography,
 } from '@mui/material'
 import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { addReview } from 'redux/reviewsReducer'
 
 type Props = {}
 
@@ -16,16 +18,8 @@ type Review = {
 }
 
 const Reviews = (props: Props) => {
-    const arrReviews: Review[] = [
-        {
-            name: 'Ted',
-            text: 'за свої гроші хороший монітор, але є одне але. на вулиці 2023 рік а в моніторі все ще є vga але нема дисплей порт',
-        },
-        {
-            name: 'Max',
-            text: 'Монітор топовий, як за свої гроші, приємні кольори та налаштування. Curved реально як в кінотеатрі)',
-        },
-    ]
+    const arrReviews = useAppSelector((state) => state.reviews)
+    const dispatch = useAppDispatch()
 
     const [reviews, setReviews] = useState<Review[]>(arrReviews)
     const [newReview, setNewReview] = useState<Review>({
@@ -50,9 +44,7 @@ const Reviews = (props: Props) => {
     const sendReview = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        setReviews((prevState) => {
-            return [...prevState, newReview]
-        })
+        dispatch(addReview(newReview))
 
         setNewReview({
             name: '',
@@ -72,7 +64,7 @@ const Reviews = (props: Props) => {
                 Reviews
             </Typography>
 
-            {reviews.map(({ name, text }, i) => (
+            {arrReviews.map(({ name, text }, i) => (
                 <Card
                     variant="outlined"
                     key={i}
