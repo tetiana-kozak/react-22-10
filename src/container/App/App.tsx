@@ -4,13 +4,13 @@ import { Container } from '@mui/material'
 import Home from 'pages/Home/Home'
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
-import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import CartPage from 'pages/CartPage/CartPage'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ProductPage from 'pages/ProductPage/ProductPage'
+import FavoritesPage from 'pages/FavoritesPage/FavoritesPage'
 
 type Props = {}
 
@@ -32,6 +32,8 @@ const App = (props: Props) => {
                     <Route path="/cart" element={<CartPage />} />
 
                     <Route path="/products/:id" element={<ProductPage />} />
+
+                    <Route path="/favorites" element={<FavoritesPage />} />
                 </Routes>
             </Container>
             <Footer />
