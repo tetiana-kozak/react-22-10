@@ -11,6 +11,7 @@ import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ProductPage from 'pages/ProductPage/ProductPage'
 import FavoritesPage from 'pages/FavoritesPage/FavoritesPage'
+import CheckoutPage from 'pages/CheckoutPage/CheckoutPage'
 
 type Props = {}
 
@@ -34,6 +35,8 @@ const App = (props: Props) => {
                     <Route path="/products/:id" element={<ProductPage />} />
 
                     <Route path="/favorites" element={<FavoritesPage />} />
+
+                    <Route path="/checkout" element={<CheckoutPage />} />
                 </Routes>
             </Container>
             <Footer />
