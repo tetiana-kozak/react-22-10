@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cartReducer from './cartReducer'
 import likeReducer from './likeReducer'
+import productsReducer from './productsReducer'
 import reviewsReducer from './reviewsReducer'
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
         productsLike: likeReducer,
         productsInCart: cartReducer,
         reviews: reviewsReducer,
+        products: productsReducer,
     },
 })
 

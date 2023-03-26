@@ -12,10 +12,19 @@ import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ProductPage from 'pages/ProductPage/ProductPage'
 import FavoritesPage from 'pages/FavoritesPage/FavoritesPage'
 import CheckoutPage from 'pages/CheckoutPage/CheckoutPage'
+import { useAppDispatch } from 'redux/hooks'
+import { useEffect } from 'react'
+import { fetchProducts } from 'redux/productsReducer'
 
 type Props = {}
 
 const App = (props: Props) => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [dispatch])
+
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
